@@ -39,7 +39,7 @@ public class MemberController {
     public Member update(@PathVariable Long id, @RequestBody Member memberDetails){
         
         Member member = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("해당 회원이 없습니다. id=" + id));
+            .orElseThrow(() -> new RuntimeException("해당 회원이 없습니다. id=" + id));
         member.setName(memberDetails.getName());
         member.setEmail(memberDetails.getEmail());
         return repository.save(member);

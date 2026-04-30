@@ -3,14 +3,21 @@ package com.example.crud.domain;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "members")
 public class Member {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false, unique = true)
+    private String nickname;
 
     public Member() {
     }
@@ -37,5 +44,13 @@ public class Member {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }
